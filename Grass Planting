@@ -1,0 +1,31 @@
+import java.io.*;
+import java.util.*;
+
+public class GrassPlanting {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bf = new BufferedReader(new FileReader("planting.in"));
+        PrintWriter out = new PrintWriter("planting.out");
+
+        int N = Integer.parseInt(bf.readLine());
+        int[] inDegree = new int[N+1];
+
+        for (int i=1; i<N; i++){
+            StringTokenizer st =new StringTokenizer(bf.readLine());
+            int a = Integer.parseInt(st.nextToken());
+            int b= Integer.parseInt(st.nextToken());
+
+            inDegree[a]++;
+            inDegree[b]++;
+        }
+
+        int ret = 0;
+        for (int i=1; i<=N; i++){
+            ret = Math.max(ret, inDegree[i]);
+        }
+
+        out.println(ret+1);
+        out.close();
+
+
+    }
+}
